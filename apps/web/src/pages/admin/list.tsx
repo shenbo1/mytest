@@ -39,7 +39,7 @@ import {
 
 export default function AdminListPage() {
   const [page, setPage] = createSignal(1);
-  const [pageSize] = createSignal(2);
+  const [pageSize] = createSignal(5);
   const [result, setResult] = createSignal<any>(null);
   const [loading, setLoading] = createSignal(true);
 
