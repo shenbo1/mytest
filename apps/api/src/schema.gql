@@ -1,0 +1,105 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateReservationInput {
+  """Arrival time must be valid"""
+  arriveTime: DateTime!
+
+  """Guest email muse be valid"""
+  guestEmail: String!
+
+  """Guest name must be valid"""
+  guestName: String!
+
+  """Guest phone must be valid"""
+  guestPhone: String!
+
+  """Restaurant id must be valid"""
+  restaurantId: String!
+
+  """Restaurant name must be valid"""
+  restaurantName: String!
+
+  """Table size must be valid"""
+  tableSize: Int!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  approve(id: String!): Reservation!
+  cancel(id: String!, reason: String!): Reservation!
+  complete(id: String!): Reservation!
+  createReservation(input: CreateReservationInput!): Reservation!
+  updateReservation(updateReservationInput: UpdateReservationInput!): Reservation!
+}
+
+type Query {
+  reservation(id: String!): Reservation!
+  reservations(filter: ReservationFilterInput, limit: Int!, offset: Int!): ReservationPaginatedResult!
+  restaurants: [Restaurant!]!
+}
+
+type Reservation {
+  arriveTime: DateTime!
+  cancelReason: String
+  guestEmail: String!
+  guestName: String!
+  guestPhone: String!
+  id: String!
+  operate: [Int!]!
+  restaurantId: String!
+  restaurantName: String!
+  status: Int!
+  tableSize: Int!
+}
+
+input ReservationFilterInput {
+  arriveTimeEnd: String
+  arriveTimeStart: String
+  status: Float
+}
+
+type ReservationPaginatedResult {
+  data: [Reservation!]!
+  hasMore: Boolean!
+  limit: Int!
+  offset: Int!
+  total: Int!
+}
+
+type Restaurant {
+  address: String!
+  description: String!
+  id: String!
+  name: String!
+  phone: String!
+}
+
+input UpdateReservationInput {
+  """Arrival time must be valid"""
+  arriveTime: DateTime
+
+  """Guest email muse be valid"""
+  guestEmail: String
+
+  """Guest name must be valid"""
+  guestName: String
+
+  """Guest phone must be valid"""
+  guestPhone: String
+  id: String!
+
+  """Restaurant id must be valid"""
+  restaurantId: String
+
+  """Restaurant name must be valid"""
+  restaurantName: String
+
+  """Table size must be valid"""
+  tableSize: Int
+}
